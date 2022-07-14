@@ -11,13 +11,17 @@ const signup = async (req, res) => {
       password: req.body.password,
     });
     res.status(201).json({
-      status: "success",
-      data: { },
+      data: {
+        status: "success",
+      },
     });
   } catch (err) {
     res.status(400).json({
-      status: "fail",
-      message: err.message,
+      data: {
+        status: "fail",
+        message: err.message,
+      },
+
     });
   }
 };
@@ -33,13 +37,19 @@ const login = async (req, res) => {
       expiresIn: process.env.JWT_EXPIRES_IN,
     });
     res.status(200).json({
-      status: "success",
-      token,
+      data: {
+        status: "success",
+        token,
+      },
+
     });
   } catch (err) {
     res.status(400).json({
-      status: "fail",
-      message: err.message,
+      data: {
+        status: "fail",
+        message: err.message,
+      },
+
     });
   }
 };

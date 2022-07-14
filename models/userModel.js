@@ -5,12 +5,13 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: [true, "A user should have an username"],
+    minlength: 2,
     unique: true,
   },
   password: {
     type: String,
     required: [true, "A user should have a password"],
-    minlength: 8,
+    minlength: 6,
     select: false,
   },
   contacts: [{

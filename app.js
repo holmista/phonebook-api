@@ -16,10 +16,10 @@ app.use("/api/users", userRouter);
 app.use("/api/contact", contactRouter);
 app.use("/api/call", callRouter);
 app.use("*", (req, res) => {
-  res.status(404).json({ data: { status: "fail", message: "Not found" } });
+  res.status(404).json({ status: "fail", message: "Not found" });
 });
 app.use((err, req, res, next) => {
-  res.status(500).json({ data: { status: "fail", message: "Server error" } });
+  res.status(500).json({ status: "fail", message: "Server error" });
 });
 const port = process.env.PORT;
 app.listen(port, () => console.log(`running on port ${port}`));

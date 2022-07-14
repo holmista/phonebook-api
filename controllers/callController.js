@@ -3,13 +3,11 @@ const Call = require("../models/callModel");
 const makeCall = async (req, res) => {
   try {
     await Call.create({ user: req.user.id, contact: req.body.contact });
-    res.status(201).json({ data: { status: "success" } });
+    res.status(201).json({ status: "success" });
   } catch (err) {
     res.status(400).json({
-      data: {
-        status: "fail",
-        message: err.message,
-      },
+      status: "fail",
+      message: err.message,
     });
   }
 };

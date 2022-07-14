@@ -4,18 +4,14 @@ const getAllContacts = async (req, res) => {
   try {
     const contacts = await Contact.find({ user: req.user._id });
     res.status(201).json({
-      data: {
-        status: "success",
-        data: { contacts },
-      },
+      status: "success",
+      data: { contacts },
 
     });
   } catch (err) {
     res.status(400).json({
-      data: {
-        status: "fail",
-        message: err.message,
-      },
+      status: "fail",
+      message: err.message,
 
     });
   }
@@ -25,18 +21,14 @@ const createContact = async (req, res) => {
   try {
     const contact = await Contact.create(req.body);
     res.status(200).json({
-      data: {
-        status: "success",
-        data: { contact },
-      },
+      status: "success",
+      data: { contact },
 
     });
   } catch (err) {
     res.status(400).json({
-      data: {
-        status: "fail",
-        message: err.message,
-      },
+      status: "fail",
+      message: err.message,
 
     });
   }
@@ -47,18 +39,14 @@ const updateContact = async (req, res) => {
     const contact = await Contact.findByIdAndUpdate(req.params.contactId, req.body, { new: true });
     if (!contact) throw new Error("invalid contact");
     res.status(200).json({
-      data: {
-        status: "success",
-        data: { contact },
-      },
+      status: "success",
+      data: { contact },
 
     });
   } catch (err) {
     res.status(400).json({
-      data: {
-        status: "fail",
-        message: err.message,
-      },
+      status: "fail",
+      message: err.message,
     });
   }
 };
@@ -68,16 +56,12 @@ const deleteContact = async (req, res) => {
     const contact = await Contact.findByIdAndDelete(req.params.contactId);
     if (!contact) throw new Error("invalid contact");
     res.status(200).json({
-      data: {
-        status: "success",
-      },
+      status: "success",
     });
   } catch (err) {
     res.status(400).json({
-      data: {
-        status: "fail",
-        message: err.message,
-      },
+      status: "fail",
+      message: err.message,
     });
   }
 };

@@ -3,6 +3,7 @@ const User = require("../models/userModel");
 
 const signup = async (req, res) => {
   try {
+    console.log(req.body);
     if (req.body.password !== req.body.confirmPassword) {
       throw new Error("passwords do not match");
     }
@@ -11,16 +12,13 @@ const signup = async (req, res) => {
       password: req.body.password,
     });
     res.status(201).json({
-      data: {
-        status: "success",
-      },
+      status: "success",
     });
   } catch (err) {
+    console.log(err);
     res.status(400).json({
-      data: {
-        status: "fail",
-        message: err.message,
-      },
+      status: "fail",
+      message: err.message,
 
     });
   }
@@ -37,19 +35,14 @@ const login = async (req, res) => {
       expiresIn: process.env.JWT_EXPIRES_IN,
     });
     res.status(200).json({
-      data: {
-        status: "success",
-        token,
-      },
+      status: "success",
+      token,
 
     });
   } catch (err) {
     res.status(400).json({
-      data: {
-        status: "fail",
-        message: err.message,
-      },
-
+      status: "fail",
+      message: err.message,
     });
   }
 };

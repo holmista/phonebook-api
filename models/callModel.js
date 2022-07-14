@@ -1,15 +1,6 @@
 const mongoose = require("mongoose");
 
 const callSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "A call should have a name"],
-    unique: true,
-  },
-  number: {
-    type: Number,
-    required: [true, "A call should have a number"],
-  },
   user: {
     type: mongoose.Schema.Types.ObjectID,
     ref: "User",

@@ -2,7 +2,7 @@ const Contact = require("../models/contactModel");
 
 const getAllContacts = async (req, res) => {
   try {
-    const contacts = await Contact.findById(req.user._id);
+    const contacts = await Contact.find({ user: req.user._id });
     res.status(201).json({
       status: "success",
       data: { contacts },
@@ -52,7 +52,7 @@ const deleteContact = async (req, res) => {
     if (!contact) throw new Error("invalid contact");
     res.status(200).json({
       status: "success",
-      data: { contact },
+      data: { },
     });
   } catch (err) {
     res.status(400).json({

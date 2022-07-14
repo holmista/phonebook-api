@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.use(auth);
 
-router.get("/:userId", getAllContacts);
+router.get("/", getAllContacts);
 router.post("/", createContact);
 router.patch("/:contactId", updateContact);
 router.delete("/:contactId", deleteContact);

@@ -4,7 +4,6 @@ const contactSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "A contact should have a name"],
-    unique: true,
     validate: {
       validator(val) {
         const valid = !/\d/.test(val);

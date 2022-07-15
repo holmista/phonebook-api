@@ -19,7 +19,7 @@ const getAllContacts = async (req, res) => {
 
 const createContact = async (req, res) => {
   try {
-    const contact = await Contact.create(req.body);
+    const contact = await Contact.create({ ...req.body, user: req.user._id });
     res.status(200).json({
       status: "success",
       data: { contact },
